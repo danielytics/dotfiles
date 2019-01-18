@@ -6,7 +6,7 @@ cd $BASEDIR
 DOTFILES=$(pwd)
 cd $PRVEDIR
 # Move everything except config into place
-FILES=$(ls $DOTFILES | grep -vE 'install|config')
+FILES=$(ls $DOTFILES | grep -vE 'install|config|LICENSE')
 for file in $FILES
 do
   echo "Linking ~/.$file"
