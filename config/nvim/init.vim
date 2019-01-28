@@ -26,7 +26,9 @@ endif
 
 " Required:
 filetype plugin indent on
-syntax enable
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
@@ -43,7 +45,10 @@ set mouse=a
 filetype on
 filetype plugin on
 filetype plugin indent on
-syntax on
+:set t_Co=256
+let g:solarized_termtrans = 1
+hi Normal ctermbg=none
+colorscheme flattened_dark
 
 " Some useful settings
 set smartindent
@@ -65,7 +70,5 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 set nowrap           "no line wrapping
-colorscheme solarized  "use the theme gruvbox
-set background=dark "use the light version of gruvbox
 " change the color of chars over the width of 80 into blue
 au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)

@@ -344,7 +344,7 @@ exec --no-startup-id unclutter --timeout 3
 exec --no-startup-id conky -c ~/.conky/main_widget
 #exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 15 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id telegram-desktop -startintray
