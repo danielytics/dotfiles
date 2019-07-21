@@ -80,11 +80,19 @@ POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND='196'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker lein tmux vscode archlinux)
+plugins=(git docker lein tmux vscode archlinux aws)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+export PATH="/home/dan/.anaconda3/bin:$PATH"
+
+export PATH=$PATH:/home/dan/.bin
+
+export PATH=$PATH:/home/dan/.local/graalvm-ce-1.0.0-rc14/bin
+
+source '/home/dan/.local/lib/azure-cli/az.completion'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -92,12 +100,14 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+   export EDITOR='nvim'
+fi
 
+# Change i3 layout to horizontal
+i3-msg "split horizontal" > /dev/null
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -112,3 +122,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias pbcopy="xclip -sel clip"
+alias pbpaste="xclip -sel clip -o"
+
+alias icat="kitty +kitten icat"
+
+export TERM="xterm-256color"
+export LEIN_USE_BOOTCLASSPATH="no"
+
+export PATH="$(yarn global bin):$PATH"

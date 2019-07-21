@@ -18,6 +18,18 @@ if dein#load_state('/home/dan/.cache/dein')
 
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  call dein#add('clojure-vim/acid.nvim')
+  call dein#add('clojure-vim/async-clj-omni')
+  call dein#add('Olical/conjure')
+  call dein#add('eraserhd/parinfer-rust')
+  call dein#add('kien/rainbow_parentheses.vim')
+  call dein#add('snoe/clj-refactor.nvim')
+  call dein#add('scrooloose/nerdtree')
 
   " Required:
   call dein#end()
@@ -70,5 +82,57 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 set nowrap           "no line wrapping
-" change the color of chars over the width of 80 into blue
-au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
+
+let g:deoplete#enable_at_startup = 1
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+" Navigation
+set splitbelow
+set splitright
+nnoremap <C-e> <C-W><C-J>
+nnoremap <C-u> <C-W><C-K>
+nnoremap <C-i> <C-W><C-L>
+nnoremap <C-n> <C-W><C-H>
+noremap <C-Up> 10<Up>
+noremap <C-Down> 10<Down>
+
+" Spacemacs'y keys """"""""""""
+
+" Splits
+nnoremap <Space>w/ :vsp<CR>
+nnoremap <Space>w- :sp<CR>
+
+" Files
+nnoremap <Space>ff :e .<CR>
+
+" Tabs
+nnoremap <Space>tc :tabnew<CR>
+nnoremap <Space>tn :tabnext<CR>
+nnoremap <Space>tp :tabprev<CR>
+nnoremap <Space>tq :tabclose<CR>
