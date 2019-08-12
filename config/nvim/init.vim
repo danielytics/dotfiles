@@ -19,17 +19,20 @@ if dein#load_state('/home/dan/.cache/dein')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  call dein#add('clojure-vim/acid.nvim')
+  let g:deoplete#enable_at_startup = 1
+
+  "call dein#add('clojure-vim/acid.nvim')
   call dein#add('clojure-vim/async-clj-omni')
-  call dein#add('Olical/conjure')
+  "call dein#add('Olical/conjure')
+  call dein#add('tpope/vim-salve')
+  call dein#add('tpope/vim-projectionist')
+  call dein#add('tpope/vim-dispatch')
+  call dein#add('tpope/vim-fireplace')
   call dein#add('eraserhd/parinfer-rust')
   call dein#add('kien/rainbow_parentheses.vim')
   call dein#add('snoe/clj-refactor.nvim')
   call dein#add('scrooloose/nerdtree')
+  call dein#add('troydm/zoomwintab.vim')
 
   " Required:
   call dein#end()
@@ -112,6 +115,8 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
+let g:conjure_log_blacklist = ["up", "eval", "ret", "load-file"]
+
 " Navigation
 set splitbelow
 set splitright
@@ -125,14 +130,23 @@ noremap <C-Down> 10<Down>
 " Spacemacs'y keys """"""""""""
 
 " Splits
-nnoremap <Space>w/ :vsp<CR>
-nnoremap <Space>w- :sp<CR>
+nnoremap <silent> <Space>w/ :vsp<CR>
+nnoremap <silent> <Space>w- :sp<CR>
+nnoremap <silent> <Space>wx :q<CR>
 
 " Files
-nnoremap <Space>ff :e .<CR>
+nnoremap <silent> <Space>ff :e .<CR>
+nnoremap <silent> <Space>fw :NERDTreeToggle<CR>
+nnoremap <silent> <Space>fs :w<CR>
 
 " Tabs
-nnoremap <Space>tc :tabnew<CR>
-nnoremap <Space>tn :tabnext<CR>
-nnoremap <Space>tp :tabprev<CR>
-nnoremap <Space>tq :tabclose<CR>
+nnoremap <silent> <Space>tc :tabnew<CR>
+nnoremap <silent> <Space>tn :tabnext<CR>
+nnoremap <silent> <Space>tp :tabprev<CR>
+nnoremap <silent> <Space>tq :tabclose<CR>
+
+" Search
+nnoremap <silent> <Space>sc :nohl<CR>
+
+" Other
+nnoremap <silent> <Space>px :set nopaste<CR>
