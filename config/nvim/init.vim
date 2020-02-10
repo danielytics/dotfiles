@@ -18,12 +18,15 @@ if dein#load_state('/home/dan/.cache/dein')
 
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
+  "call dein#add('Shougo/deoplete.nvim')
+  "let g:deoplete#enable_at_startup = 1
 
   "call dein#add('clojure-vim/acid.nvim')
   call dein#add('clojure-vim/async-clj-omni')
   "call dein#add('Olical/conjure')
+  call dein#add('liuchengxu/vim-clap')
+  call dein#add('guns/vim-sexp', {'on_ft': 'clojure'}) 
+  call dein#add('liquidz/vim-iced', {'on_ft': 'clojure', 'rev': 'dev'})  
   call dein#add('tpope/vim-salve')
   call dein#add('tpope/vim-projectionist')
   call dein#add('tpope/vim-dispatch')
@@ -112,6 +115,9 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+set hidden
+let g:iced_enable_default_key_mappings = v:true
+
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
@@ -137,16 +143,38 @@ nnoremap <silent> <Space>wx :q<CR>
 " Files
 nnoremap <silent> <Space>ff :e .<CR>
 nnoremap <silent> <Space>fw :NERDTreeToggle<CR>
-nnoremap <silent> <Space>fs :w<CR>
+nnoremap <Space>fs :w<CR>
 
 " Tabs
 nnoremap <silent> <Space>tc :tabnew<CR>
 nnoremap <silent> <Space>tn :tabnext<CR>
 nnoremap <silent> <Space>tp :tabprev<CR>
 nnoremap <silent> <Space>tq :tabclose<CR>
+nnoremap <silent> <Space>1 1gt
+nnoremap <silent> <Space>2 2gt
+nnoremap <silent> <Space>3 3gt
+nnoremap <silent> <Space>4 4gt
+nnoremap <silent> <Space>5 5gt
 
 " Search
 nnoremap <silent> <Space>sc :nohl<CR>
 
 " Other
-nnoremap <silent> <Space>px :set nopaste<CR>
+nnoremap <Space>cc "+
+nnoremap <Space>px :set nopaste<CR>
+" Persistent undo
+set undodir=$HOME/.cache/vim/undo
+set undolevels=1000
+set undoreload=10000
+set undofile
+
+" Clojure
+nnoremap <silent> <Space>nn :IcedSlurp<CR>
+nnoremap <silent> <Space>nh :IcedBarf<CR>
+nnoremap <silent> <Space>nl :IcedTestUnderCursor<CR>
+nnoremap <silent> <Space>nj :IcedTestNs<CR>
+nnoremap <silent> <Space>ny :IcedTestRerunLast<CR>
+nnoremap <silent> <Space>no :IcedTestSpecCheck<CR>
+nnoremap <silent> <Space>n' :IcedToggleTraceNs<CR>
+nnoremap <silent> <Space>nt :IcedDefJump<CR>
+nnoremap <silent> <Space>ns :IcedDefBack<CR>

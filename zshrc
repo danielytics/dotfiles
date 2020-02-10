@@ -88,7 +88,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/home/dan/.anaconda3/bin:$PATH"
 
-export PATH=$PATH:/home/dan/.bin
+export PATH="/home/dan/.gem/ruby/2.6.0/bin:$PATH"
+
+export PATH=$PATH:/home/dan/.cache/dein/repos/github.com/liquidz/vim-iced/bin/:/home/dan/.bin
 
 export PATH=$PATH:/home/dan/.local/graalvm-ce-1.0.0-rc14/bin
 
@@ -105,6 +107,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
    export EDITOR='nvim'
 fi
+
+unsetopt BEEP
 
 # Change i3 layout to horizontal
 i3-msg "split horizontal" > /dev/null

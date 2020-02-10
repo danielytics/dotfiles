@@ -1,6 +1,9 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+exec --no-startup-id setxkbmap -option
+exec --no-startup-id setxkbmap -option ctrl:nocaps
+
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
@@ -84,14 +87,14 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 focus_follows_mouse no
 
 # Keyboard layouts
-bindsym $mod+Ctrl+F1 exec --no-startup-id setxkbmap -model pc105 -layout us -variant euro
-bindsym $mod+Ctrl+F2 exec --no-startup-id setxkbmap -model pc105 -layout us -variant colemak
+bindsym $mod+Ctrl+F1 exec --no-startup-id setxkbmap -model pc105 -layout us -variant euro -option ctrl:nocaps
+bindsym $mod+Ctrl+F2 exec --no-startup-id setxkbmap -model pc105 -layout us -variant colemak -option ctrl:nocaps
 # Screen layout
 bindsym $mod+Ctrl+Shift+F1 exec --no-startup-id sh ~/.screenlayout/multi.sh
 bindsym $mod+Ctrl+Shift+F2 exec --no-startup-id sh ~/.screenlayout/single.sh
 # Both
-bindsym $mod+Shift+F1 exec --no-startup-id setxkbmap -model pc105 -layout us -variant euro; exec --no-startup-id sh ~/.screenlayout/multi.sh
-bindsym $mod+Shift+F2 exec --no-startup-id setxkbmap -model pc105 -layout us -variant colemak; exec --no-startup-id sh ~/.screenlayout/single.sh
+bindsym $mod+Shift+F1 exec --no-startup-id setxkbmap -model pc105 -layout us -variant euro -option ctrl:nocaps; exec --no-startup-id sh ~/.screenlayout/multi.sh
+bindsym $mod+Shift+F2 exec --no-startup-id setxkbmap -model pc105 -layout us -variant colemak -option ctrl:nocaps; exec --no-startup-id sh ~/.screenlayout/single.sh
 
 # change focus
 bindsym $mod+u focus up
@@ -311,10 +314,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym n resize grow width 5 px or 5 ppt
+        bindsym n resize shrink width 5 px or 5 ppt
         bindsym u resize grow height 5 px or 5 ppt
         bindsym e resize shrink height 5 px or 5 ppt
-        bindsym i resize shrink width 5 px or 5 ppt
+        bindsym i resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize grow width 10 px or 10 ppt
