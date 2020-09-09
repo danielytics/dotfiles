@@ -86,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/dan/.anaconda3/bin:$PATH"
+export PATH="/opt/anaconda/bin:$PATH"
 
 export PATH="/home/dan/.gem/ruby/2.6.0/bin:$PATH"
 
@@ -95,6 +95,8 @@ export PATH=$PATH:/home/dan/.cache/dein/repos/github.com/liquidz/vim-iced/bin/:/
 export PATH=$PATH:/home/dan/.local/graalvm-ce-1.0.0-rc14/bin
 
 source '/home/dan/.local/lib/azure-cli/az.completion'
+export PATH=$PATH:/home/dan/.local/bin
+export PATH=$PATH:/home/dan/.bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -135,3 +137,4 @@ export TERM="xterm-256color"
 export LEIN_USE_BOOTCLASSPATH="no"
 
 export PATH="$(yarn global bin):$PATH"
+export PATH="/home/dan/.cargo/bin:$PATH"

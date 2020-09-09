@@ -50,10 +50,10 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -86,9 +86,12 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 focus_follows_mouse no
 
+# Toggle caps lock
+bindsym $mod+Shift+F9 exec --no-startup-id xdotool key Caps_Lock
+
 # Keyboard layouts
 bindsym $mod+Ctrl+F1 exec --no-startup-id setxkbmap -model pc105 -layout us -variant euro -option ctrl:nocaps
-bindsym $mod+Ctrl+F2 exec --no-startup-id setxkbmap -model pc105 -layout us -variant colemak -option ctrl:nocaps
+bindsym $mod+Ctrl+F2 exec --no-startup-id setxkbmap -model pc105 -layout us -variant colemak -option ctrl:nocap
 # Screen layout
 bindsym $mod+Ctrl+Shift+F1 exec --no-startup-id sh ~/.screenlayout/multi.sh
 bindsym $mod+Ctrl+Shift+F2 exec --no-startup-id sh ~/.screenlayout/single.sh
@@ -122,8 +125,8 @@ bindsym $mod+Shift+Up move up $move-amt
 bindsym $mod+Shift+Right move right $move-amt
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
+workspace_auto_back_and_forth no
+bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
@@ -431,7 +434,7 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 1
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
