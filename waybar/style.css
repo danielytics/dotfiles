@@ -1,0 +1,68 @@
+* {
+	font-size: 14px;
+	font-family: monospace;
+	padding: 0;
+	margin: 0;
+	background: #1a1a1a;
+}
+
+window#waybar {
+	background: #292b2e;
+	color: #fdf6e3;
+}
+
+#clock,
+#workspaces,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#disk,
+#tray {
+	background: #1a1a1a;
+	min-width: 30px;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: #fdf6e3;
+}
+#workspaces button.focused {
+	color: #268bd2;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: #1a1a1a;
+	border: #1a1a1a;
+	padding: 0 3px;
+}
+
+#window,
+#pulseaudio {
+	color: #268bd2;
+}
+#battery {
+	color: #859900;
+}
+#clock {
+	color: #2aa198;
+}
+
+#clock,
+#spotify,
+#pulseaudio,
+#cpu,
+#battery {
+	padding: 0 15px;
+}
+
+#custom-spotify {
+	margin: 0px 6px 0px 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	min-width:  25px;
+	color: #b58900;
+}

@@ -1,0 +1,66 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 26,
+
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["custom/spotify", "clock", "backlight", "pulseaudio", "battery", "tray"],
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true,
+        "tooltip": false
+    },
+    "sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%a %d %b %H:%M}",
+        "tooltip": false
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": "{capacity}% ",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+    "pulseaudio": {
+	"format": "{icon} {volume:2}%",
+	"format-bluetooth": "{icon}  {volume}%",
+	"format-muted": "",
+	"format-icons": ["", ""],
+	"scroll-step": 5,
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"on-click-right": "pavucontrol",
+	"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+	"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%"
+    },
+    "custom/spotify": {
+        "interval": 5,
+        "return-type": "json",
+        "exec": "/home/dan/.config/waybar/modules/spotify.sh",
+        "exec-if": "pgrep spotify",
+	"max-length": 100,
+        "escape": true
+    },
+    "backlight": {
+        "format": "",
+        "format-alt": " {percent}%",
+        "format-alt-click": "click-right",
+        "on-scroll-down": " brightnessctl s 5%-",
+        "on-scroll-up": " brightnessctl s 5%+"
+    },
+    "tray": {
+        "icon-size": 18
+    }
+}
